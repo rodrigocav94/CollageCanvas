@@ -13,7 +13,9 @@ struct ScrollableCanvasView: View {
     var body: some View {
         PositionReadableScrollView(axes: .horizontal) {
             ZStack {
-                CanvasBackground
+                Color.white
+                    .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
+                    .frame(maxHeight: .infinity)
                 DeselectionOverlay
                 InsertedImages
             }
@@ -21,15 +23,21 @@ struct ScrollableCanvasView: View {
             HomeViewModel.lastScrolledPosition = $0 * -1
         }
         .scrollDisabled(vm.selectedImageID != nil)
+        .mask(
+            CanvasBackground
+        )
     }
 }
 
 // MARK: - Canvas Background
 extension ScrollableCanvasView {
     var CanvasBackground: some View {
-        Color.white
-            .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
-            .frame(maxHeight: .infinity)
+        VStack(spacing: 0) {
+            Color.clear
+            Color.black
+                .frame(height: vm.canvasSize.height)
+            Color.clear
+        }
     }
 }
 
