@@ -14,7 +14,7 @@ final class PexelsService {
         case page, per_page
     }
     
-    static func fetchCuratedPhotos(page: Int, completion: @escaping (Result<[Photo], Error>) -> Void) {
+    static func fetchCuratedPhotos(page: Int, completion: @escaping (Result<[PhotoData], Error>) -> Void) {
         
         var components = URLComponents(string: "https://api.pexels.com/v1/curated")!
 

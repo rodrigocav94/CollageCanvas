@@ -15,7 +15,7 @@ struct HomeView: View {
             AddImageButton
         }
         .sheet(isPresented: $vm.displayingSheet) {
-            CuratedPhotosView()
+            CuratedPhotosView(homeVM: vm)
         }
     }
 }

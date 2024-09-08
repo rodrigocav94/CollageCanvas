@@ -9,10 +9,10 @@ import Foundation
 
 // Model for the Pexels API response
 struct PexelsResponse: Codable {
-    let photos: [Photo]
+    let photos: [PhotoData]
 }
 
-struct Photo: Codable, Identifiable {
+struct PhotoData: Codable, Identifiable {
     let id: Int
     let width: Int
     let height: Int

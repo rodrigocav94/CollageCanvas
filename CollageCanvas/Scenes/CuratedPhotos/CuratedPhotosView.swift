@@ -10,6 +10,7 @@ import SwiftUI
 struct CuratedPhotosView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var vm = CuratedPhotosViewModel()
+    @ObservedObject var homeVM: HomeViewModel
     
     var body: some View {
         NavigationStack {
@@ -44,23 +45,18 @@ extension CuratedPhotosView {
 // MARK: - Loaded Photos
 extension CuratedPhotosView {
     var LoadedPhotos: some View {
-        ForEach(vm.loadedPhotos) { loadedPhoto in
+        ForEach(vm.loadedImages) { loadedImage in
             Button {
                 dismiss()
             } label: {
-                AsyncImage(url: loadedPhoto.src.medium) { result in
-                    result
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    ProgressView()
-                        .frame(height: 100)
-                }
-            }
-            .onAppear {
-                if vm.loadedPhotos.last?.id == loadedPhoto.id {
-                    vm.loadPhotos()
-                }
+                loadedImage.image
+                    .resizable()
+                    .scaledToFit()
+                    .onAppear {
+                        if vm.loadedPhotoData.last?.id == loadedImage.id {
+                            vm.loadPhotos()
+                        }
+                    }
             }
         }
         .frame(maxWidth: 150, maxHeight: 150)
@@ -81,5 +77,5 @@ extension CuratedPhotosView {
 }
 
 #Preview {
-    CuratedPhotosView()
+    CuratedPhotosView(homeVM: HomeViewModel())
 }
