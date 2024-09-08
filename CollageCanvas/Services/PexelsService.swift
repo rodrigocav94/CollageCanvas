@@ -12,7 +12,7 @@ final class PexelsService {
     
     static func fetchCuratedPhotos(completion: @escaping (Result<[Photo], Error>) -> Void) {
         
-        let baseURL = "https://api.pexels.com/v1/curated?per_page=1"
+        let baseURL = "https://api.pexels.com/v1/curated?per_page=80"
         
         // Create the URL
         guard let url = URL(string: baseURL) else {

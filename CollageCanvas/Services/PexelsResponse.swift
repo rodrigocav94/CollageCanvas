@@ -12,7 +12,7 @@ struct PexelsResponse: Codable {
     let photos: [Photo]
 }
 
-struct Photo: Codable {
+struct Photo: Codable, Identifiable {
     let id: Int
     let width: Int
     let height: Int
@@ -22,4 +22,5 @@ struct Photo: Codable {
 
 struct PhotoSrc: Codable {
     let medium: URL
+    let small: URL
 }
