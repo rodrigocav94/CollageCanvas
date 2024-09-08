@@ -11,7 +11,7 @@ struct HomeView: View {
     @StateObject var vm = HomeViewModel()
     
     var body: some View {
-        ZStack {
+        VStack(spacing: 20) {
             ScrollableCanvasView(vm: vm)
             AddImageButton
         }
@@ -32,7 +32,6 @@ extension HomeView {
                 .font(.largeTitle)
                 .padding(.bottom)
         }
-        .frame(maxHeight: .infinity, alignment: .bottom)
         .buttonStyle(.plain)
     }
 }

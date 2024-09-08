@@ -11,12 +11,14 @@ struct ScrollableCanvasView: View {
     @ObservedObject var vm: HomeViewModel
     
     var body: some View {
-        ScrollView(.horizontal) {
+        PositionReadableScrollView(axes: .horizontal) {
             ZStack {
                 CanvasBackground
                 DeselectionOverlay
                 InsertedImages
             }
+        } onScroll: {
+            HomeViewModel.lastScrolledPosition = $0 * -1
         }
         .scrollDisabled(vm.selectedImageID != nil)
     }

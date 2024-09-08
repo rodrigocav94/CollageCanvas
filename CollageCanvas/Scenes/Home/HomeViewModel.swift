@@ -39,4 +39,6 @@ class HomeViewModel: ObservableObject {
         insertedImages.append(newImage)
         displayingSheet = false
     }
+    
+    static var lastScrolledPosition: CGFloat = 0
 }

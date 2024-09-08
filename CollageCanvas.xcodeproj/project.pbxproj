@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F2681C82C8E5CB000C8FC20 /* ScrollableCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2681C72C8E5CB000C8FC20 /* ScrollableCanvasView.swift */; };
+		9F2681CC2C8E68E100C8FC20 /* PositionReadableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2681CB2C8E68E100C8FC20 /* PositionReadableScrollView.swift */; };
 		9F6EF6AC2C8DFA9800B212B3 /* CollageCanvasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6AB2C8DFA9800B212B3 /* CollageCanvasApp.swift */; };
 		9F6EF6AE2C8DFA9800B212B3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6AD2C8DFA9800B212B3 /* HomeView.swift */; };
 		9F6EF6B02C8DFA9A00B212B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		9F2681C72C8E5CB000C8FC20 /* ScrollableCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCanvasView.swift; sourceTree = "<group>"; };
+		9F2681CB2C8E68E100C8FC20 /* PositionReadableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionReadableScrollView.swift; sourceTree = "<group>"; };
 		9F6EF6A82C8DFA9800B212B3 /* CollageCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollageCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6EF6AB2C8DFA9800B212B3 /* CollageCanvasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageCanvasApp.swift; sourceTree = "<group>"; };
 		9F6EF6AD2C8DFA9800B212B3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F2681CA2C8E68D200C8FC20 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9F2681CB2C8E68E100C8FC20 /* PositionReadableScrollView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		9F6EF69F2C8DFA9800B212B3 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 		9F6EF6AA2C8DFA9800B212B3 /* CollageCanvas */ = {
 			isa = PBXGroup;
 			children = (
+				9F2681CA2C8E68D200C8FC20 /* Components */,
 				9F6EF6D82C8E45F700B212B3 /* Models */,
 				9F6EF6D22C8E27B000B212B3 /* Utils */,
 				9F6EF6C52C8E163D00B212B3 /* Info.plist */,
@@ -259,6 +270,7 @@
 				9F6EF6BE2C8E10AF00B212B3 /* PexelsService.swift in Sources */,
 				9F6EF6C82C8E1C5B00B212B3 /* HomeViewModel.swift in Sources */,
 				9F2681C82C8E5CB000C8FC20 /* ScrollableCanvasView.swift in Sources */,
+				9F2681CC2C8E68E100C8FC20 /* PositionReadableScrollView.swift in Sources */,
 				9F6EF6AE2C8DFA9800B212B3 /* HomeView.swift in Sources */,
 				9F6EF6D72C8E286800B212B3 /* Localization.swift in Sources */,
 				9F6EF6D52C8E27CA00B212B3 /* String+Extensions.swift in Sources */,
