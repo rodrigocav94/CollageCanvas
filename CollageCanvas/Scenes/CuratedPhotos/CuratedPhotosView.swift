@@ -16,7 +16,7 @@ struct CuratedPhotosView: View {
             ScrollView(.vertical) {
                 VerticalGrid
             }
-            .navigationTitle("Overlays")
+            .navigationTitle(Localization.CuratedPhotos.overlays.localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 CloseButton

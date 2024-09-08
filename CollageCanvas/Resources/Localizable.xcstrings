@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "overlays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overlays"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

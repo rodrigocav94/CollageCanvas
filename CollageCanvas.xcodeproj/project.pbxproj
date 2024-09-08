@@ -17,6 +17,9 @@
 		9F6EF6C82C8E1C5B00B212B3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6C72C8E1C5B00B212B3 /* HomeViewModel.swift */; };
 		9F6EF6CB2C8E1DF600B212B3 /* CuratedPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6CA2C8E1DF600B212B3 /* CuratedPhotosView.swift */; };
 		9F6EF6CD2C8E1E2C00B212B3 /* CuratedPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6CC2C8E1E2C00B212B3 /* CuratedPhotosViewModel.swift */; };
+		9F6EF6CF2C8E25E000B212B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9F6EF6CE2C8E25E000B212B3 /* Localizable.xcstrings */; };
+		9F6EF6D52C8E27CA00B212B3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6D42C8E27CA00B212B3 /* String+Extensions.swift */; };
+		9F6EF6D72C8E286800B212B3 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6D62C8E286800B212B3 /* Localization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		9F6EF6C72C8E1C5B00B212B3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9F6EF6CA2C8E1DF600B212B3 /* CuratedPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedPhotosView.swift; sourceTree = "<group>"; };
 		9F6EF6CC2C8E1E2C00B212B3 /* CuratedPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratedPhotosViewModel.swift; sourceTree = "<group>"; };
+		9F6EF6CE2C8E25E000B212B3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9F6EF6D42C8E27CA00B212B3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		9F6EF6D62C8E286800B212B3 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 		9F6EF6AA2C8DFA9800B212B3 /* CollageCanvas */ = {
 			isa = PBXGroup;
 			children = (
+				9F6EF6D22C8E27B000B212B3 /* Utils */,
 				9F6EF6C52C8E163D00B212B3 /* Info.plist */,
 				9F6EF6C12C8E13BA00B212B3 /* Config */,
 				9F6EF6BC2C8E109000B212B3 /* Services */,
@@ -105,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */,
+				9F6EF6CE2C8E25E000B212B3 /* Localizable.xcstrings */,
+				9F6EF6D62C8E286800B212B3 /* Localization.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -143,6 +152,22 @@
 				9F6EF6CC2C8E1E2C00B212B3 /* CuratedPhotosViewModel.swift */,
 			);
 			path = CuratedPhotos;
+			sourceTree = "<group>";
+		};
+		9F6EF6D22C8E27B000B212B3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6D32C8E27B600B212B3 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9F6EF6D32C8E27B600B212B3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6D42C8E27CA00B212B3 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +230,7 @@
 			files = (
 				9F6EF6B32C8DFA9A00B212B3 /* Preview Assets.xcassets in Resources */,
 				9F6EF6B02C8DFA9A00B212B3 /* Assets.xcassets in Resources */,
+				9F6EF6CF2C8E25E000B212B3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +245,8 @@
 				9F6EF6BE2C8E10AF00B212B3 /* PexelsService.swift in Sources */,
 				9F6EF6C82C8E1C5B00B212B3 /* HomeViewModel.swift in Sources */,
 				9F6EF6AE2C8DFA9800B212B3 /* HomeView.swift in Sources */,
+				9F6EF6D72C8E286800B212B3 /* Localization.swift in Sources */,
+				9F6EF6D52C8E27CA00B212B3 /* String+Extensions.swift in Sources */,
 				9F6EF6CB2C8E1DF600B212B3 /* CuratedPhotosView.swift in Sources */,
 				9F6EF6C42C8E143E00B212B3 /* SchemeEnvironment.swift in Sources */,
 				9F6EF6AC2C8DFA9800B212B3 /* CollageCanvasApp.swift in Sources */,
