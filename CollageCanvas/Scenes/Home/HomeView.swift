@@ -33,6 +33,7 @@ extension HomeView {
                 .padding(.bottom)
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
+        .buttonStyle(.plain)
     }
 }
 

@@ -18,6 +18,7 @@ struct ScrollableCanvasView: View {
                 InsertedImages
             }
         }
+        .scrollDisabled(vm.selectedImageID != nil)
     }
 }
 
@@ -33,10 +34,15 @@ extension ScrollableCanvasView {
 // MARK: - Deselection Overlay
 extension ScrollableCanvasView {
     var DeselectionOverlay: some View {
-        Color.white.opacity(0.1)
-            .onTapGesture {
-                vm.deselectImage()
+        Group {
+            if vm.selectedImageID != nil {
+                Color.white.opacity(0.01)
+                    .onTapGesture {
+                        vm.deselectImage()
+                    }
+
             }
+        }
     }
 }
 

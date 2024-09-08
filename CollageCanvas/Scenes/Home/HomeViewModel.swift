@@ -32,4 +32,11 @@ class HomeViewModel: ObservableObject {
     func isImageSelected(_ image: LoadedImage) -> Bool {
         selectedImageID == image.id
     }
+    
+    func insertImage(_ selectedImage: LoadedImage) {
+        var newImage = selectedImage
+        newImage.id = Int.random(in: 1...9999)
+        insertedImages.append(newImage)
+        displayingSheet = false
+    }
 }
