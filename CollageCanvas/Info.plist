@@ -4,5 +4,7 @@
 <dict>
 	<key>PEXELS_KEY</key>
 	<string>$(PEXELS_KEY)</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
 </dict>
 </plist>
