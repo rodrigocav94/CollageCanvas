@@ -46,7 +46,7 @@ class CuratedPhotosViewModel: ObservableObject {
                         if !self.loadedImages.contains(where: {
                             $0.id == photo.id
                         }) {
-                            self.loadedImages.append(LoadedImage(id: photo.id, image: swiftUIImage))
+                            self.loadedImages.append(LoadedImage(id: photo.id, image: swiftUIImage, size: loadedImage.size))
                         }
                     }
                 }

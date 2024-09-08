@@ -12,7 +12,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            ScrollableCanvas
+            ScrollableCanvasView(vm: vm)
             AddImageButton
         }
         .sheet(isPresented: $vm.displayingSheet) {
@@ -33,43 +33,6 @@ extension HomeView {
                 .padding(.bottom)
         }
         .frame(maxHeight: .infinity, alignment: .bottom)
-    }
-}
-
-// MARK: - Canvas
-extension HomeView {
-    var ScrollableCanvas: some View {
-        ScrollView(.horizontal) {
-            ZStack {
-                Color.white
-                    .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
-                    .frame(maxHeight: .infinity)
-                
-                ForEach($vm.insertedImages) { $draggableImage in
-                    draggableImage.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaleEffect(draggableImage.scale)
-                        .position(draggableImage.position)
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    draggableImage.position = value.location
-                                }
-                        )
-                        .gesture(
-                            MagnificationGesture()
-                                .onChanged { val in
-                                    vm.onMagnificationGestureChanged(val: val, draggableImage: &draggableImage)
-                                }
-                                .onEnded {_ in 
-                                    vm.onMagnificationGestureEnded(draggableImage: &draggableImage)
-                                }
-                        )
-                }
-            }
-        }
-        .clipShape(Rectangle())
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var displayingSheet = false
     @Published var insertedImages = [LoadedImage]()
+    @Published var selectedImageID: Int? = nil
     
     @Published var canvasSize = CGSize(width: 1200, height: 300)
     
@@ -22,5 +23,13 @@ class HomeViewModel: ObservableObject {
     
     func onMagnificationGestureEnded(draggableImage: inout LoadedImage) {
         draggableImage.lastScale = 1.0
+    }
+    
+    func deselectImage() {
+        selectedImageID = nil
+    }
+    
+    func isImageSelected(_ image: LoadedImage) -> Bool {
+        selectedImageID == image.id
     }
 }
