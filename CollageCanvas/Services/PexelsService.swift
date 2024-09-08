@@ -10,12 +10,20 @@ import Foundation
 // Service class for fetching curated photos from Pexels
 final class PexelsService {
     
-    static func fetchCuratedPhotos(completion: @escaping (Result<[Photo], Error>) -> Void) {
+    private enum Params: String {
+        case page, per_page
+    }
+    
+    static func fetchCuratedPhotos(page: Int, completion: @escaping (Result<[Photo], Error>) -> Void) {
         
-        let baseURL = "https://api.pexels.com/v1/curated?per_page=80"
-        
-        // Create the URL
-        guard let url = URL(string: baseURL) else {
+        var components = URLComponents(string: "https://api.pexels.com/v1/curated")!
+
+        components.queryItems = [
+            URLQueryItem(name: Params.page.rawValue, value: String(page)),
+            URLQueryItem(name: Params.per_page.rawValue, value: "15")
+        ]
+
+        guard let url = components.url else {
             print("Invalid URL")
             return
         }
