@@ -58,8 +58,3 @@ class CuratedPhotosViewModel: ObservableObject {
         }
     }
 }
-
-struct LoadedImage: Identifiable {
-    var id: Int
-    var image: Image
-}

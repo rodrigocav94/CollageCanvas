@@ -11,7 +11,7 @@ struct HomeView: View {
     @StateObject var vm = HomeViewModel()
     
     var body: some View {
-        VStack(spacing: 20) {
+        ZStack {
             ScrollableCanvas
             AddImageButton
         }
@@ -32,30 +32,44 @@ extension HomeView {
                 .font(.largeTitle)
                 .padding(.bottom)
         }
+        .frame(maxHeight: .infinity, alignment: .bottom)
     }
 }
 
 // MARK: - Canvas
 extension HomeView {
     var ScrollableCanvas: some View {
-        Color.clear
-            .background {
-                ScrollView(.horizontal) {
-                    Color.white
-                        .frame(width: vm.canvasWidth, height: vm.canvasHeight)
-                        .frame(maxHeight: .infinity)
-                    .gesture(
-                        MagnificationGesture()
-                            .onChanged { val in
-                                vm.onMagnificationGestureChanged(val: val)
-                            }.onEnded { val in
-                                vm.onMagnificationGestureEnded()
-                            }
-                    )
+        ScrollView(.horizontal) {
+            ZStack {
+                Color.white
+                    .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
+                    .frame(maxHeight: .infinity)
+                
+                ForEach($vm.insertedImages) { $draggableImage in
+                    draggableImage.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(draggableImage.scale)
+                        .position(draggableImage.position)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    draggableImage.position = value.location
+                                }
+                        )
+                        .gesture(
+                            MagnificationGesture()
+                                .onChanged { val in
+                                    vm.onMagnificationGestureChanged(val: val, draggableImage: &draggableImage)
+                                }
+                                .onEnded {_ in 
+                                    vm.onMagnificationGestureEnded(draggableImage: &draggableImage)
+                                }
+                        )
                 }
             }
-            .clipShape(Rectangle())
-
+        }
+        .clipShape(Rectangle())
     }
 }
 
