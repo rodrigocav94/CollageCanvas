@@ -9,4 +9,5 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var displayingSheet = false
+    @Published var insertedImages = [LoadedImage]()
 }

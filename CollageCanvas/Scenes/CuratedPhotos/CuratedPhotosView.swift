@@ -47,6 +47,7 @@ extension CuratedPhotosView {
     var LoadedPhotos: some View {
         ForEach(vm.loadedImages) { loadedImage in
             Button {
+                homeVM.insertedImages.append(loadedImage)
                 dismiss()
             } label: {
                 loadedImage.image
