@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  CollageCanvas
+//
+//  Created by Rodrigo Cavalcanti on 08/09/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Pexels Key
+PEXELS_KEY = 0rWBGhCRoFiVbbq4duycTLqsvROdrjKqHdGkciUBYdubEU21DoqNC6yY

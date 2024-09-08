@@ -11,6 +11,9 @@
 		9F6EF6AE2C8DFA9800B212B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6AD2C8DFA9800B212B3 /* ContentView.swift */; };
 		9F6EF6B02C8DFA9A00B212B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */; };
 		9F6EF6B32C8DFA9A00B212B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6EF6B22C8DFA9A00B212B3 /* Preview Assets.xcassets */; };
+		9F6EF6BE2C8E10AF00B212B3 /* PexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6BD2C8E10AF00B212B3 /* PexelsService.swift */; };
+		9F6EF6C02C8E138B00B212B3 /* PexelsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6BF2C8E138B00B212B3 /* PexelsResponse.swift */; };
+		9F6EF6C42C8E143E00B212B3 /* SchemeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6C32C8E143E00B212B3 /* SchemeEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,11 @@
 		9F6EF6AD2C8DFA9800B212B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6EF6B22C8DFA9A00B212B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F6EF6BD2C8E10AF00B212B3 /* PexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsService.swift; sourceTree = "<group>"; };
+		9F6EF6BF2C8E138B00B212B3 /* PexelsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsResponse.swift; sourceTree = "<group>"; };
+		9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		9F6EF6C32C8E143E00B212B3 /* SchemeEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeEnvironment.swift; sourceTree = "<group>"; };
+		9F6EF6C52C8E163D00B212B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +59,12 @@
 		9F6EF6AA2C8DFA9800B212B3 /* CollageCanvas */ = {
 			isa = PBXGroup;
 			children = (
-				9F6EF6AB2C8DFA9800B212B3 /* CollageCanvasApp.swift */,
-				9F6EF6AD2C8DFA9800B212B3 /* ContentView.swift */,
-				9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */,
+				9F6EF6C52C8E163D00B212B3 /* Info.plist */,
+				9F6EF6C12C8E13BA00B212B3 /* Config */,
+				9F6EF6BC2C8E109000B212B3 /* Services */,
+				9F6EF6BA2C8E101400B212B3 /* Core */,
+				9F6EF6BB2C8E103900B212B3 /* Resources */,
+				9F6EF6B92C8E100900B212B3 /* Views */,
 				9F6EF6B12C8DFA9A00B212B3 /* Preview Content */,
 			);
 			path = CollageCanvas;
@@ -65,6 +76,48 @@
 				9F6EF6B22C8DFA9A00B212B3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9F6EF6B92C8E100900B212B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6AD2C8DFA9800B212B3 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9F6EF6BA2C8E101400B212B3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6AB2C8DFA9800B212B3 /* CollageCanvasApp.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9F6EF6BB2C8E103900B212B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6AF2C8DFA9A00B212B3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9F6EF6BC2C8E109000B212B3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6BD2C8E10AF00B212B3 /* PexelsService.swift */,
+				9F6EF6BF2C8E138B00B212B3 /* PexelsResponse.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9F6EF6C12C8E13BA00B212B3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */,
+				9F6EF6C32C8E143E00B212B3 /* SchemeEnvironment.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +190,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6EF6BE2C8E10AF00B212B3 /* PexelsService.swift in Sources */,
 				9F6EF6AE2C8DFA9800B212B3 /* ContentView.swift in Sources */,
+				9F6EF6C42C8E143E00B212B3 /* SchemeEnvironment.swift in Sources */,
 				9F6EF6AC2C8DFA9800B212B3 /* CollageCanvasApp.swift in Sources */,
+				9F6EF6C02C8E138B00B212B3 /* PexelsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +203,7 @@
 /* Begin XCBuildConfiguration section */
 		9F6EF6B42C8DFA9A00B212B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -210,6 +267,7 @@
 		};
 		9F6EF6B52C8DFA9A00B212B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -266,6 +324,7 @@
 		};
 		9F6EF6B72C8DFA9A00B212B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -275,6 +334,7 @@
 				DEVELOPMENT_TEAM = 52DJP63H9U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CollageCanvas/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -295,6 +355,7 @@
 		};
 		9F6EF6B82C8DFA9A00B212B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F6EF6C22C8E13CD00B212B3 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,6 +365,7 @@
 				DEVELOPMENT_TEAM = 52DJP63H9U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CollageCanvas/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
