@@ -42,30 +42,72 @@ class HomeViewModel: ObservableObject {
     
     static var lastScrolledPosition: CGFloat = 0
     
+    var verticalBoundaries: [CGFloat]  {
+        var boundaries: [CGFloat] = [0, canvasSize.height]
+        
+        let insertedImagesBoundaries = insertedImages.filter {
+            $0.id != selectedImageID
+        }.map {
+            let bottom = $0.position.y + ($0.frameHeight / 2)
+            let top = $0.position.y - ($0.frameHeight / 2)
+            
+            return [bottom, top]
+        }.joined()
+        
+        boundaries.append(contentsOf: Array(insertedImagesBoundaries))
+        
+        return boundaries
+    }
+    
+    var horizontalBoundaries: [CGFloat]  {
+        var boundaries: [CGFloat] = [0, canvasSize.width]
+        
+        let insertedImagesBoundaries = insertedImages.filter {
+            $0.id != selectedImageID
+        }.map {
+            let right = $0.position.x + ($0.frameWidth / 2)
+            let left = $0.position.x - ($0.frameWidth / 2)
+            
+            return [right, left]
+        }.joined()
+        
+        boundaries.append(contentsOf: Array(insertedImagesBoundaries))
+        
+        return boundaries
+    }
+    
     func onDragImage(image: inout LoadedImage, _ location: CGPoint) {
         var newPosition = location
         let imageHalfHeight = (image.frameHeight / 2)
         let imageHalfWidth = (image.frameWidth / 2)
         
         // Snap Top
-        snapVertically(towardsTop: true, imageHalfHeight: imageHalfHeight, location: &newPosition, y: 0)
+        for boundary in verticalBoundaries {
+            snapVertically(towardsTop: true, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary)
+        }
         
         // Snap Bottom
-        snapVertically(towardsTop: false, imageHalfHeight: imageHalfHeight, location: &newPosition, y: canvasSize.height)
+        for boundary in verticalBoundaries {
+            snapVertically(towardsTop: false, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary)
+        }
         
         // Snap Left
-        snapHorizontally(towardsLeft: true, imageHalfWidth: imageHalfWidth, location: &newPosition, x: 0)
+        for boundary in horizontalBoundaries {
+            snapHorizontally(towardsLeft: true, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary)
+        }
         
         // Snap Right
-        snapHorizontally(towardsLeft: false, imageHalfWidth: imageHalfWidth, location: &newPosition, x: canvasSize.width)
+        for boundary in horizontalBoundaries {
+            snapHorizontally(towardsLeft: false, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary)
+        }
         
         image.position = newPosition
     }
     
     func snapVertically(towardsTop: Bool, imageHalfHeight: CGFloat, location: inout CGPoint, y: CGFloat) {
         let snapLocation = towardsTop ? (y + imageHalfHeight) : (y - imageHalfHeight)
-        let leftSnapZone =  snapLocation - 25
-        let rightSnapZone = snapLocation + 25
+        let leftSnapZone =  snapLocation - 10
+        let rightSnapZone = snapLocation + 10
         
         if location.y >= leftSnapZone && location.y <= rightSnapZone {
             location.y = snapLocation
@@ -74,8 +116,8 @@ class HomeViewModel: ObservableObject {
     
     func snapHorizontally(towardsLeft: Bool, imageHalfWidth: CGFloat, location: inout CGPoint, x: CGFloat) {
         let snapLocation = towardsLeft ? (x + imageHalfWidth) :  (x - imageHalfWidth)
-        let leftSnapZone =  snapLocation - 25
-        let rightSnapZone = snapLocation + 25
+        let leftSnapZone =  snapLocation - 10
+        let rightSnapZone = snapLocation + 10
         
         if location.x >= leftSnapZone && location.x <= rightSnapZone {
             location.x = snapLocation
