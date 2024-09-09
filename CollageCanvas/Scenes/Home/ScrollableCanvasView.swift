@@ -12,13 +12,15 @@ struct ScrollableCanvasView: View {
     
     var body: some View {
         PositionReadableScrollView(axes: .horizontal) {
-            ZStack {
-                Color.white
-                    .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
-                    .frame(maxHeight: .infinity)
-                DeselectionOverlay
-                InsertedImages
-            }
+            Color.white
+                .frame(width: vm.canvasSize.width, height: vm.canvasSize.height)
+                .overlay {
+                    DeselectionOverlay
+                }
+                .overlay {
+                    InsertedImages
+                }
+                .frame(maxHeight: .infinity)
         } onScroll: {
             HomeViewModel.lastScrolledPosition = $0 * -1
         }
@@ -47,6 +49,7 @@ extension ScrollableCanvasView {
         Group {
             if vm.selectedImageID != nil {
                 Color.white.opacity(0.01)
+                    .frame(height: UIScreen.main.bounds.size.height)
                     .onTapGesture {
                         vm.deselectImage()
                     }
@@ -76,7 +79,17 @@ extension ScrollableCanvasView {
                     .gesture(
                         DragGesture()
                             .onChanged { value in
-                                draggableImage.position = value.location
+                                print(value.location.y)
+                                var newPosition = value
+                                let topSnapBorder = (vm.canvasSize.height / 12)
+                                let imageHalfHeight = (draggableImage.frameHeight / 2)
+                                
+                                // Snap to the top
+                                if value.location.y >= (-topSnapBorder + imageHalfHeight) && value.location.y <= (topSnapBorder + imageHalfHeight) {
+                                    newPosition.location.y = 0 + imageHalfHeight
+                                }
+                                
+                                draggableImage.position = newPosition.location
                             },
                         including: vm.isImageSelected(draggableImage) ? .all : .none
                     )
