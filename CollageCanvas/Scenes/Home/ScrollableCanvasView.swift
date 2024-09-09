@@ -77,19 +77,9 @@ extension ScrollableCanvasView {
                     }
                     .position(draggableImage.position)
                     .gesture(
-                        DragGesture()
+                        DragGesture(coordinateSpace: .local)
                             .onChanged { value in
-                                print(value.location.y)
-                                var newPosition = value
-                                let topSnapBorder = (vm.canvasSize.height / 12)
-                                let imageHalfHeight = (draggableImage.frameHeight / 2)
-                                
-                                // Snap to the top
-                                if value.location.y >= (-topSnapBorder + imageHalfHeight) && value.location.y <= (topSnapBorder + imageHalfHeight) {
-                                    newPosition.location.y = 0 + imageHalfHeight
-                                }
-                                
-                                draggableImage.position = newPosition.location
+                                vm.onDragImage(image: &draggableImage, value.location)
                             },
                         including: vm.isImageSelected(draggableImage) ? .all : .none
                     )
