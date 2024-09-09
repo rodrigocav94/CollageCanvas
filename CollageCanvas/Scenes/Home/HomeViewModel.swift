@@ -14,6 +14,9 @@ class HomeViewModel: ObservableObject {
     
     @Published var canvasSize = CGSize(width: 1200, height: 300)
     
+    @Published var verticalGuidelines: [GuidelineInfo] = []
+    @Published var horizontalGuidelines: [GuidelineInfo] = []
+    
     func onMagnificationGestureChanged(val: CGFloat, draggableImage: inout LoadedImage) {
         let delta = val / draggableImage.lastScale
         draggableImage.lastScale = val
@@ -80,47 +83,71 @@ class HomeViewModel: ObservableObject {
         var newPosition = location
         let imageHalfHeight = (image.frameHeight / 2)
         let imageHalfWidth = (image.frameWidth / 2)
+        var newVerticalGuidelines: [GuidelineInfo] = []
+        var newHorizontalGuidelines: [GuidelineInfo] = []
         
         // Snap Top
         for boundary in verticalBoundaries {
-            snapVertically(towardsTop: true, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary)
+            snapVertically(towardsTop: true, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary, &newVerticalGuidelines)
         }
         
         // Snap Bottom
         for boundary in verticalBoundaries {
-            snapVertically(towardsTop: false, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary)
+            snapVertically(towardsTop: false, imageHalfHeight: imageHalfHeight, location: &newPosition, y: boundary, &newVerticalGuidelines)
         }
         
         // Snap Left
         for boundary in horizontalBoundaries {
-            snapHorizontally(towardsLeft: true, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary)
+            snapHorizontally(towardsLeft: true, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary, &newHorizontalGuidelines)
         }
         
         // Snap Right
         for boundary in horizontalBoundaries {
-            snapHorizontally(towardsLeft: false, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary)
+            snapHorizontally(towardsLeft: false, imageHalfWidth: imageHalfWidth, location: &newPosition, x: boundary, &newHorizontalGuidelines)
         }
         
         image.position = newPosition
+        horizontalGuidelines = newHorizontalGuidelines
+        verticalGuidelines = newVerticalGuidelines
     }
     
-    func snapVertically(towardsTop: Bool, imageHalfHeight: CGFloat, location: inout CGPoint, y: CGFloat) {
+    func snapVertically(towardsTop: Bool, imageHalfHeight: CGFloat, location: inout CGPoint, y: CGFloat, _ newVerticalGuidelines: inout [GuidelineInfo]) {
         let snapLocation = towardsTop ? (y + imageHalfHeight) : (y - imageHalfHeight)
         let leftSnapZone =  snapLocation - 10
         let rightSnapZone = snapLocation + 10
         
         if location.y >= leftSnapZone && location.y <= rightSnapZone {
             location.y = snapLocation
+            if let existingGuideline = verticalGuidelines.first(where: {
+                $0.position == y
+            }) {
+                newVerticalGuidelines.append(existingGuideline)
+            } else {
+                newVerticalGuidelines.append(GuidelineInfo(position: y))
+            }
         }
     }
     
-    func snapHorizontally(towardsLeft: Bool, imageHalfWidth: CGFloat, location: inout CGPoint, x: CGFloat) {
+    func snapHorizontally(towardsLeft: Bool, imageHalfWidth: CGFloat, location: inout CGPoint, x: CGFloat, _ newHorizontalGuidelines: inout [GuidelineInfo]) {
         let snapLocation = towardsLeft ? (x + imageHalfWidth) :  (x - imageHalfWidth)
         let leftSnapZone =  snapLocation - 10
         let rightSnapZone = snapLocation + 10
         
         if location.x >= leftSnapZone && location.x <= rightSnapZone {
             location.x = snapLocation
+            
+            if let existingGuideline = horizontalGuidelines.first(where: {
+                $0.position == x
+            }) {
+                newHorizontalGuidelines.append(existingGuideline)
+            } else {
+                newHorizontalGuidelines.append(GuidelineInfo(position: x))
+            }
         }
+    }
+    
+    func removeGuidelines() {
+        horizontalGuidelines = []
+        verticalGuidelines = []
     }
 }

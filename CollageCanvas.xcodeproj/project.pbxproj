@@ -23,6 +23,7 @@
 		9F6EF6D52C8E27CA00B212B3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6D42C8E27CA00B212B3 /* String+Extensions.swift */; };
 		9F6EF6D72C8E286800B212B3 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6D62C8E286800B212B3 /* Localization.swift */; };
 		9F6EF6DA2C8E460100B212B3 /* LoadedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6EF6D92C8E460100B212B3 /* LoadedImage.swift */; };
+		9FADDC762C8F3EFD0040F3B6 /* GuidelineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FADDC752C8F3EFD0040F3B6 /* GuidelineInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		9F6EF6D42C8E27CA00B212B3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		9F6EF6D62C8E286800B212B3 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		9F6EF6D92C8E460100B212B3 /* LoadedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedImage.swift; sourceTree = "<group>"; };
+		9FADDC752C8F3EFD0040F3B6 /* GuidelineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelineInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				9F6EF6D92C8E460100B212B3 /* LoadedImage.swift */,
+				9FADDC752C8F3EFD0040F3B6 /* GuidelineInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				9F6EF6D52C8E27CA00B212B3 /* String+Extensions.swift in Sources */,
 				9F6EF6CB2C8E1DF600B212B3 /* CuratedPhotosView.swift in Sources */,
 				9F6EF6DA2C8E460100B212B3 /* LoadedImage.swift in Sources */,
+				9FADDC762C8F3EFD0040F3B6 /* GuidelineInfo.swift in Sources */,
 				9F6EF6C42C8E143E00B212B3 /* SchemeEnvironment.swift in Sources */,
 				9F6EF6AC2C8DFA9800B212B3 /* CollageCanvasApp.swift in Sources */,
 				9F6EF6C02C8E138B00B212B3 /* PexelsResponse.swift in Sources */,

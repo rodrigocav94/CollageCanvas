@@ -18,6 +18,9 @@ struct ScrollableCanvasView: View {
                     DeselectionOverlay
                 }
                 .overlay {
+                    Guidelines
+                }
+                .overlay {
                     InsertedImages
                 }
                 .frame(maxHeight: .infinity)
@@ -80,7 +83,10 @@ extension ScrollableCanvasView {
                         DragGesture(coordinateSpace: .local)
                             .onChanged { value in
                                 vm.onDragImage(image: &draggableImage, value.location)
-                            },
+                            }.onEnded { _ in
+                                vm.removeGuidelines()
+                            }
+                        ,
                         including: vm.isImageSelected(draggableImage) ? .all : .none
                     )
                     .gesture(
@@ -95,6 +101,25 @@ extension ScrollableCanvasView {
                     )
             }
             .buttonStyle(.plain)
+        }
+    }
+}
+
+// MARK: - Guidelines
+extension ScrollableCanvasView {
+    var Guidelines: some View {
+        ZStack {
+            ForEach(vm.verticalGuidelines) { guideline in
+                Color.yellow
+                    .frame(height: 1)
+                    .position(CGPoint(x: 0, y: guideline.position))
+            }
+            
+            ForEach(vm.horizontalGuidelines) { guideline in
+                Color.yellow
+                    .frame(width: 1)
+                    .position(CGPoint(x: guideline.position, y: vm.canvasSize.height / 2))
+            }
         }
     }
 }
